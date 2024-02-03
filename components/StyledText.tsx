@@ -2,6 +2,8 @@ import {
   Text as DefaultText,
   TextProps as DefaultProps,
   ColorValue,
+  Platform,
+  StyleProp,
 } from 'react-native';
 
 export enum MONO_FONT_STYLE {
@@ -26,6 +28,9 @@ const MonoText = (props: TextProps) => {
     style,
     ...otherProps
   } = props;
+  const isBoldAndroid =
+    fontFamilyWeight === MONO_FONT_STYLE.BOLD && Platform.OS === 'android'; 
+ 
   return (
     <DefaultText
       style={[
@@ -34,6 +39,7 @@ const MonoText = (props: TextProps) => {
           fontSize: size,
           color,
         },
+        isBoldAndroid ? {fontWeight: '700'} : {},
         style,
       ]}
       {...otherProps}
