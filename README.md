@@ -1,5 +1,60 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
+
+# Mobile Code Challenge user stories
+
+## Debit card screen
+
+### View Total Balance:
+- As a debit card user,
+- I want to view my total balance on the debit card screen,
+- So that I can quickly check the available funds in my account.
+
+### View Debit Card Information with Toggle:
+- As a debit card user
+- I want to view my debit card information on the screen,
+And have the option to toggle the display of sensitive information (CVV and full card number, except the last 4 digits)
+- So that I can conveniently access my card details while ensuring the security of sensitive information.
+
+### Set Up/Toggle Weekly Spending Limit:
+- As a debit card user
+- I want to have control over my weekly spending limit on the debit card screen
+- So that I can manage my expenses effectively
+
+#### Scenario 1: Weekly Spending Limit is On:
+- Given that I am on the debit card screen,
+- When I interact with the weekly spending limit toggle switch
+- I want to be able to toggle it off by pressing the switch
+or press on the entire spending limit section to navigate to the screen for adjusting the spending limit value 
+so that I can easily turn off the limit or make adjustments as needed.
+
+#### Scenario 2: Weekly Spending Limit is Off:
+
+- Given that I am on the debit card screen,
+- When I press on the spending limit section or the limit toggle switch
+- I want to be navigated to the screen where I can set the weekly spending limit
+So that I can establish a spending limit when it's currently turned off.
+
+## Set Weekly Spending Limit:
+- As a debit card user
+- I want to set my weekly spending limit on a dedicated screen
+- So that I can control and monitor my expenses effectively
+### Details:
+- Given that I am on the "Set Weekly Spending Limit" screen
+- I should see a back button to navigate back to the debit card screen.
+- I should see an input field to type the weekly spending limit. If I've previously set a value and returned to this screen, the input should display the last set value; otherwise, the input should be empty.
+- If the input has a value that is not a valid amount of money, an error message should be displayed: "Spending limit is not valid."
+- I should see three suggestions (5000, 10000, 20000) to quickly set the spending limit. Clicking on a suggestion should fill the input field with the selected value.
+- I should see a save button that is initially disabled. The save button should be enabled only when the input value is a valid amount of money and not empty.
+- When I press the save button:
+  - The amount entered in the input field should be set as the weekly spending limit.
+  - The toggle for the weekly spending limit on the debit card screen should be turned on.
+
+
+
+>**Note**:  I use the mock api with set timeout and promise. There are 3 apis (fetchCardInfo, fetchBalance, fetchWeeklySpending). Feel free to adjust the response value or the time delay in [debitSaga.ts](./redux/sagas/debitSaga.ts)
+
+
 # Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
@@ -46,34 +101,3 @@ If everything is set up _correctly_, you should see your new app running in your
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.

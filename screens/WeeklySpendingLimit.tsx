@@ -1,6 +1,7 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {
   Image,
+  Keyboard,
   KeyboardAvoidingView,
   StyleSheet,
   TextInput,
@@ -81,7 +82,7 @@ const WeeklySpendingLimitScreen = () => {
 
   const payloadMemo = useMemo(() => {
     const limit = Number(value);
-    if (isNaN(limit)) {
+    if (isNaN(limit) || !limit) {
       return {
         isValid: false,
         limit: null,
@@ -136,7 +137,7 @@ const WeeklySpendingLimitScreen = () => {
             <CurrencyComponent />
           </View>
         </View>
-        {!payloadMemo.isValid && (
+        {!payloadMemo.isValid && !!value.length && (
           <MonoText
             size={12}
             fontFamilyWeight={MONO_FONT_STYLE.REGULAR}
@@ -156,7 +157,10 @@ const WeeklySpendingLimitScreen = () => {
         <View style={styles.rowBetween}>
           {limitSuggestion.map(limit => (
             <TouchableOpacity
-              onPress={() => setValue(limit.toString())}
+              onPress={() => {
+                Keyboard.dismiss();
+                setValue(limit.toString());
+              }}
               key={limit.toString()}
               style={styles.suggestionWrapper}>
               <MonoText

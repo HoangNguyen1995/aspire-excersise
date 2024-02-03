@@ -5,7 +5,7 @@ import {
   fetchCardInfoFulfilledAction,
   fetchWeeklySpendingFulfilledAction,
 } from '../actions/debitActions';
-import {createMockApi, mockCardInfoApi} from '../../apis';
+import {createMockApi} from '../../apis';
 
 function* fetchCardInfo() {
   const cardInfo = yield call(

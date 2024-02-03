@@ -1,5 +1,5 @@
 export const decodeAmount = (text: string) => {
-  return text.replace(/[ ,+-]/g, '');
+  return text.replace(/[^0-9.]/g, '');
 };
 
 export const encodeAmount = (x: string | number) => {
